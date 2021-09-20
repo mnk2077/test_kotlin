@@ -6,8 +6,17 @@
 
 Компиляция, Запуск и Тестировка:
 
-для компиляции запустить файл BUILD.bat
-для запуска - файл RUN.bat
+Для запуска файлов необходимо:
+
+1.скачать и установить Comunity Edition IDE IntelliJ IDEA от JetBrains https://www.jetbrains.com/ru-ru/idea/download/#section=windows
+
+2.Склонировать данный проект из репозитория
+
+3.Запустить проект в IntelliJ IDEA
+
+4.Перейти в нужный файл task
+
+5.Нажать комбинацию файлов Ctr+shift+f10 или нажать в меню RUN->Run task
 
 Тестовые сценарии
 
