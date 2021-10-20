@@ -21,3 +21,17 @@
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
+
+course_kotlin.iml
+
+out/production/course_kotlin/META-INF/course_kotlin.kotlin_module
+
+*.bin
+
+*.lock
+
+*.properties
+
+.idea/kotlinc.xml
+
+*.xml
