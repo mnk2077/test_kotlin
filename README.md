@@ -1,3 +1,7 @@
+![example workflow](https://github.com/github/docs/actions/workflows/main.yml/badge.svg)
+
+![GitHub language count](https://img.shields.io/github/languages/count/staners2/programEngineer)
+
 **Test_Kotlin**
 
 Краткое руководство
