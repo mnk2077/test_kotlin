@@ -1,6 +1,8 @@
 package project.userUtils
 
 import project.models.User
+import java.math.BigInteger
+import java.security.MessageDigest
 
 class DataStorage() {
 
@@ -27,10 +29,16 @@ class DataStorage() {
     }
 
     fun saveCurrentUser(user: User): Boolean {
+        user.userPassword = hash(hash(user.userPassword+user.userSalt))
+        println(user)
         dataUsers.add(user)
         return true
-    }
 
+    }
+    private fun hash(userPassword: String?): String {
+        val md = MessageDigest.getInstance("MD5")
+        return BigInteger(1, md.digest(userPassword?.toByteArray())).toString(16).padStart(32,'0')
+    }
     fun findUsersByName(userName: String?) = dataUsers.find { it.userName == userName }
 
     fun isUserAlreadyHas(userName: String?) = findUsersByName(userName) != null

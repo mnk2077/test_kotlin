@@ -29,10 +29,10 @@ object AuthHelper {
         var success = false
         if (foundedUser == null){
             success = context.saveCurrentUser(user)
+            println (user)
         }
         return success
     }
-
     private fun signIn(user: User, context: DataStorage): Boolean {
         //TODO Авторизовать пользователя, если всё ок - вывести сообщение "Успешно" и вернуть true, если нет false
         val foundedUser = context.findUsersByName(user.userName) ?: throw Exception("User not founded")
@@ -41,6 +41,7 @@ object AuthHelper {
         println(foundedUser.userSalt)
         return if (foundedUser.userPassword == hashPassword) {
             println("User is auth")
+            println (user)
             true
         } else {
             println("Error in Auth")
