@@ -1,5 +1,6 @@
 package project.models
 
+
 data class User(
     var userName: String? = null,
     var userPassword: String? = null,
@@ -17,15 +18,17 @@ data class User(
 
     private fun setDefaultResource(): User {
         if (userResourceWithRoleReed == null) {
-            var resource = Resource()
-            userResourceWithRoleReed = listOf(resource.resourceA, resource.resourceB, resource.resourceC)
+            val refResourceA = ResourceA()
+            val refResourceB = ResourceB()
+            val refResourceC = ResourceC()
+            userResourceWithRoleReed = listOf(refResourceA.resourceA, refResourceB.resourceB, refResourceC.resourceC)
         }
         return this
     }
 
     private fun setDefaultRole(): User {
         if (this.userRole == null) {
-            var role = Role()
+            val role = Role()
             userRole = listOf(role.readRole)
         }
         return this
