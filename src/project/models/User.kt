@@ -6,7 +6,7 @@ data class User(
     var userPassword: String? = null,
     var userSalt: String? = null,
     var userRole: List<String>? = null,
-    var userResourceWithRoleReed: List<String>? = null,
+    var userResourceWithRoleReed: MutableList<String>? = null,
     var userResourceWithRoleWrite: List<String>? = null,
     var userResourceWithRoleExecute: List<String>? = null,
     var ds: String? = null,
@@ -21,23 +21,25 @@ data class User(
     }
 
     private fun setEndTime() {
-        TODO("Not yet implemented")
+        return
     }
 
     private fun setStartTime() {
-        TODO("Not yet implemented")
+        return
     }
 
     private fun setDefaultResource(): User {
+        val refResourceA = ResourceA()
+        val refResourceB = ResourceB()
+        val refResourceC = ResourceC()
         if (userResourceWithRoleReed == null) {
-            val refResourceA = ResourceA()
-            val refResourceB = ResourceB()
-            val refResourceC = ResourceC()
-            userResourceWithRoleReed = if (userResourceWithRoleReed?.get(0) == refResourceA.resourceA)
-                listOf(refResourceB.resourceB, refResourceC.resourceC)
-            else
-                listOf(refResourceC.resourceC)
-        }
+            userResourceWithRoleReed = mutableListOf(refResourceA.resourceA, refResourceB.resourceB, refResourceC.resourceC)
+        }else if (userResourceWithRoleReed?.get(0) == refResourceA.resourceA) {
+            userResourceWithRoleReed?.add(refResourceB.resourceB)
+            userResourceWithRoleReed?.add(refResourceC.resourceC)
+        }else if (userResourceWithRoleReed?.get(0) == refResourceB.resourceB)
+            userResourceWithRoleReed?.add(refResourceC.resourceC)
+
         return this
     }
 

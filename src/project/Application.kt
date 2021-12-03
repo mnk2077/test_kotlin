@@ -27,7 +27,7 @@ class Application {
 
     private fun onStart() {
         val dataStart = getStartTime()
-        dataStorage = DataStorage(dataStart, null)
+        dataStorage = DataStorage()
         doAuthUser(dataStart)
     }
 
@@ -37,7 +37,7 @@ class Application {
             AuthHelper.getUserDataFromConsole().let {
                 val isUserAuthorized = AuthHelper.authUser(it, dataStorage)
                 val dataEnd = getEndTime()
-                dataStorage = DataStorage(dataStart, dataEnd)
+                dataStorage = DataStorage()
                 if (isUserAuthorized) //TODO перекинуть в меню
                     else throw Exception("Error when user auth")
             }
