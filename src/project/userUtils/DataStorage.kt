@@ -20,10 +20,10 @@ class DataStorage(ds: String?, de: String?) {
     private fun fillUsersData(ds: String?, de: String?) {
         dataUsers.addAll(
             listOf<User>(
-                User("Иванов", "5ae85c1cf1bc57cf7e7b98c4cc54e23b","FeDkdDo3XY", listOf("READ"), ds = ds, de = de,  ),
-                User("Петров", "91f6da7d40095b79525e2610af860d37","pm2bkWhkM8", listOf("READ") ),
-                User("Никитин", "62cc0bf318745468fd15d9984cba6a46", "qoZdatAgsH", listOf("READ")),
-                User("Линник", "93218283b74ceaa103734608374d793b","ccyunkQxj5")
+                User("Иванов", "5ae85c1cf1bc57cf7e7b98c4cc54e23b","FeDkdDo3XY", listOf("READ"), ds = "04-12-2021 14:32:15", de = "04-12-2021 14:35:45"  ),
+                User("Петров", "91f6da7d40095b79525e2610af860d37","pm2bkWhkM8", listOf("READ"),ds = "04-12-2021 14:40:30", de = "04-12-2021 14:41:45" ),
+                User("Никитин", "62cc0bf318745468fd15d9984cba6a46", "qoZdatAgsH", listOf("READ"), ds = "04-12-2021 14:41:23", de = "04-12-2021 14:42:56"),
+                User("Линник", "93218283b74ceaa103734608374d793b","ccyunkQxj5",ds = "04-12-2021 01:32:00", de = "04-12-2021 01:36:45")
             )
         )
         dataUsers.forEach(::println)
