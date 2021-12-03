@@ -20,9 +20,9 @@ class DataStorage(ds: String?, de: String?) {
     private fun fillUsersData(ds: String?, de: String?) {
         dataUsers.addAll(
             listOf<User>(
-                User("Иванов", "5ae85c1cf1bc57cf7e7b98c4cc54e23b","FeDkdDo3XY", ds = ds, de = de ),
-                User("Петров", "91f6da7d40095b79525e2610af860d37","pm2bkWhkM8"),
-                User("Никитин", "62cc0bf318745468fd15d9984cba6a46", "qoZdatAgsH"),
+                User("Иванов", "5ae85c1cf1bc57cf7e7b98c4cc54e23b","FeDkdDo3XY", listOf("READ"), ds = ds, de = de,  ),
+                User("Петров", "91f6da7d40095b79525e2610af860d37","pm2bkWhkM8", listOf("READ") ),
+                User("Никитин", "62cc0bf318745468fd15d9984cba6a46", "qoZdatAgsH", listOf("READ")),
                 User("Линник", "93218283b74ceaa103734608374d793b","ccyunkQxj5")
             )
         )
