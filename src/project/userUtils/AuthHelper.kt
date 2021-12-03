@@ -14,7 +14,8 @@ object AuthHelper {
 
     private fun getFieldFromConsoleLine(fieldName: String): String {
         print("Введите $fieldName: ")
-        return readLine() ?: throw Exception("Data is null")
+        val login = readLine() ?: throw Exception("Data is null")
+        return if ((login.length > 20) and (login.length <= 1)) throw Exception("length out of range") else login
     }
 
     fun authUser(user: User, context: DataStorage): Boolean {

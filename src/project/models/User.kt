@@ -9,11 +9,23 @@ data class User(
     var userResourceWithRoleReed: List<String>? = null,
     var userResourceWithRoleWrite: List<String>? = null,
     var userResourceWithRoleExecute: List<String>? = null,
+    var ds: String? = null,
+    var de: String? = null
 ) {
     init {
         generateRandomSalt()
+        setStartTime()
+        setEndTime()
         setDefaultRole()
         setDefaultResource()
+    }
+
+    private fun setEndTime() {
+        TODO("Not yet implemented")
+    }
+
+    private fun setStartTime() {
+        TODO("Not yet implemented")
     }
 
     private fun setDefaultResource(): User {
@@ -21,7 +33,10 @@ data class User(
             val refResourceA = ResourceA()
             val refResourceB = ResourceB()
             val refResourceC = ResourceC()
-            userResourceWithRoleReed = listOf(refResourceA.resourceA, refResourceB.resourceB, refResourceC.resourceC)
+            userResourceWithRoleReed = if (userResourceWithRoleReed?.get(0) == refResourceA.resourceA)
+                listOf(refResourceB.resourceB, refResourceC.resourceC)
+            else
+                listOf(refResourceC.resourceC)
         }
         return this
     }
@@ -34,7 +49,7 @@ data class User(
         return this
     }
 
-    fun generateRandomSalt(): User {
+    private fun generateRandomSalt(): User {
         if (this.userSalt == null) this.userSalt = generateSalt()
         return this
     }
