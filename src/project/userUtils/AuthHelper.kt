@@ -1,5 +1,6 @@
 package project.userUtils
 
+import project.Application
 import project.models.User
 import java.math.BigInteger
 import java.security.MessageDigest
@@ -25,12 +26,11 @@ object AuthHelper {
     }
 
     private fun signUp(user: User,context: DataStorage): Boolean {
-        //TODO Авторизовать пользователя, если всё ок - вывести сообщение "Успешно" и вернуть true, если нет false
+        //TODO Зарегистрировать пользователя, если всё ок - вывести сообщение "Успешно" и вернуть true, если нет false
         val foundedUser = context.findUsersByName(user.userName)
         var success = false
         if (foundedUser == null){
             success = context.saveCurrentUser(user)
-            println (user)
         }
         return success
     }
@@ -38,11 +38,8 @@ object AuthHelper {
         //TODO Авторизовать пользователя, если всё ок - вывести сообщение "Успешно" и вернуть true, если нет false
         val foundedUser = context.findUsersByName(user.userName) ?: throw Exception("User not founded")
         val hashPassword = hash(hash(user.userPassword)+foundedUser.userSalt)
-        println(hashPassword)
-        println(foundedUser.userSalt)
         return if (foundedUser.userPassword == hashPassword) {
             println("User is auth")
-            println (user)
             true
         } else {
             println("Error in Auth")

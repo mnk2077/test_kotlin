@@ -2,11 +2,9 @@ package project
 
 import project.userUtils.AuthHelper
 import project.userUtils.DataStorage
-import java.time.LocalDateTime
-import java.time.format.DateTimeFormatter
 
 fun main(args: Array<String>) {
-   Application()
+    Application()
 }
 
 class Application {
@@ -17,42 +15,24 @@ class Application {
         onStart()
     }
 
-    private fun getStartTime(): String {
-        val current = LocalDateTime.now()
-        val formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss") ?: throw Exception("Get time error")
-        val formatted = current.format(formatter)
-        println("Текущее время:$formatted")
-        return formatted
-    }
-
     private fun onStart() {
-        val dataStart = getStartTime()
         dataStorage = DataStorage()
-        doAuthUser(dataStart)
+        doAuthUser()
     }
 
-    private fun doAuthUser(dataStart: String?) {
+    private fun doAuthUser() {
         try {
             println("Пожалуйста, введите данные для входа")
             AuthHelper.getUserDataFromConsole().let {
                 val isUserAuthorized = AuthHelper.authUser(it, dataStorage)
-                val dataEnd = getEndTime()
-                dataStorage = DataStorage()
+                dataStorage.editUserDataStart(it)
                 if (isUserAuthorized) //TODO перекинуть в меню
-                    else throw Exception("Error when user auth")
+                else throw Exception("Error when user auth")
             }
         } catch (e: Exception) {
             println(e.localizedMessage)
-            doAuthUser(dataStart)
+            doAuthUser()
         }
-    }
-
-    private fun getEndTime(): String {
-        val current = LocalDateTime.now()
-        val formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss") ?: throw Exception("Get time error")
-        val formatted = current.format(formatter)
-        println("Текущее время:$formatted")
-        return formatted
     }
 
 }
